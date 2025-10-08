@@ -1,0 +1,31 @@
+[package]
+name = "treasury_governance"
+version = "0.1.0"
+authors = ["WIlfred Team <adzerwilfred007@gmail.com>"]
+edition = "2021"
+
+[dependencies]
+ink = { version = "6.0.0-alpha", default-features = false }
+
+[dev-dependencies]
+ink_e2e = { version = "6.0.0-alpha" }
+
+[lib]
+path = "lib.rs"
+
+[features]
+default = ["std"]
+std = [
+    "ink/std",
+]
+ink-as-dependency = []
+e2e-tests = []
+
+[package.metadata.ink-lang]
+abi = "ink"
+
+[lints.rust.unexpected_cfgs]
+level = "warn"
+check-cfg = [
+    'cfg(ink_abi, values("ink", "sol", "all"))'
+]
